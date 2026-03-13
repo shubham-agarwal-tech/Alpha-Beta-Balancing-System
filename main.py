@@ -1,4 +1,4 @@
-from ingestion import MockIngestionService
+from ingestion import IngestionService
 from strategies import AlphaStrategy, BetaStrategy
 from risk_manager import RiskManager
 from ml_optimizer import MLOptimizer
@@ -8,15 +8,15 @@ import time
 def run_phase3_demo():
     print("=== Alpha-Beta System Phase 3: Risk Management & ML Feedback Demo ===\n")
     
-    ingestion = MockIngestionService()
+    ingestion = IngestionService()
     risk_manager = RiskManager()
     ml_optimizer = MLOptimizer()
     
     # Initialize Strategies
-    beta_strat = BetaStrategy("strat_beta_001", "Passive Beta (SPY)")
-    alpha_strat = AlphaStrategy("strat_alpha_001", "Mean Reversion Alpha", ["SPY", "BTC"])
+    beta_strat = BetaStrategy("strat_beta_001", "Passive Beta (^NSEI)", "^NSEI")
+    alpha_strat = AlphaStrategy("strat_alpha_001", "Mean Reversion Alpha", ["RELIANCE.NS", "TCS.NS"])
     
-    symbols = ["SPY", "TLT", "GLD", "BTC"]
+    symbols = ["^NSEI", "RELIANCE.NS", "TCS.NS", "HDFCBANK.NS", "GOLDBEES.NS"]
     
     print(f"System Components Initialized. Starting Dynamic Allocation Loop...\n")
     

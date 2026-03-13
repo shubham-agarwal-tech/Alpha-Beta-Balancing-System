@@ -18,12 +18,12 @@ class MLOptimizer:
         Heuristic-based ML classifier to identify market regime.
         In a real scenario, this would be an LSTM or Random Forest model.
         """
-        # Using SPY as a proxy for market sentiment
-        spy_prices = [md.price for md in market_data if md.symbol == "SPY"]
-        if not spy_prices:
+        # Using ^NSEI (Nifty 50) as a proxy for market sentiment
+        nsei_prices = [md.price for md in market_data if md.symbol == "^NSEI"]
+        if not nsei_prices:
             return MarketRegime.SIDEWAYS
         
-        self.market_history.append(spy_prices[0])
+        self.market_history.append(nsei_prices[0])
         if len(self.market_history) < 5:
             return MarketRegime.SIDEWAYS
         

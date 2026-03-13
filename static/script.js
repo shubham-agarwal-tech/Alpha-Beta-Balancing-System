@@ -35,7 +35,7 @@ function updatePrices(data) {
     list.innerHTML = data.map(item => `
         <div class="price-item">
             <span class="price-symbol">${item.symbol}</span>
-            <span class="price-value">$${item.price.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>
+            <span class="price-value">₹${item.price.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>
         </div>
     `).join('');
 }

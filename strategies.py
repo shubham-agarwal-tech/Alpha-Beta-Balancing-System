@@ -48,8 +48,8 @@ class BaseStrategy(ABC):
         }
 
 class BetaStrategy(BaseStrategy):
-    """Passive Buy and Hold strategy for a specific benchmark (e.g., SPY)."""
-    def __init__(self, strategy_id: str, name: str, benchmark_symbol: str = "SPY"):
+    """Passive Buy and Hold strategy for a specific benchmark (e.g., ^NSEI)."""
+    def __init__(self, strategy_id: str, name: str, benchmark_symbol: str = "^NSEI"):
         super().__init__(strategy_id, name, StrategyType.BETA)
         self.benchmark_symbol = benchmark_symbol
 

@@ -9,7 +9,7 @@ The **Alpha-Beta Balancing System** is a modular framework built to handle the c
 ### Core Philosophy
 
 - **Alpha Strategy**: Market-independent returns through mean reversion and factor models.
-- **Beta Strategy**: Systematic exposure to broad market benchmarks (e.g., SPY).
+- **Beta Strategy**: Systematic exposure to broad market benchmarks (e.g., Nifty 50 - ^NSEI).
 - **Dynamic Rebalancing**: ML-driven reallocation based on detected market regimes (Bull, Bear, Volatile).
 - **Rigorous Risk Control**: Multi-layer risk management including stop-losses, position sizing, and diversification guardrails.
 

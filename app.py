@@ -1,7 +1,7 @@
 from fastapi import FastAPI, BackgroundTasks
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
-from ingestion import MockIngestionService
+from ingestion import IngestionService
 from strategies import AlphaStrategy, BetaStrategy
 from risk_manager import RiskManager
 from ml_optimizer import MLOptimizer
@@ -13,17 +13,17 @@ import os
 import uvicorn
 
 app = FastAPI(title="Alpha-Beta System API")
-ingestion = MockIngestionService()
+ingestion = IngestionService()
 
 # Global strategy instances for demo
-alpha_strat = AlphaStrategy("strat_alpha_001", "Mean Reversion Alpha", ["SPY", "BTC"])
-beta_strat = BetaStrategy("strat_beta_001", "Passive Beta (SPY)")
+alpha_strat = AlphaStrategy("strat_alpha_001", "Mean Reversion Alpha", ["RELIANCE.NS", "TCS.NS"])
+beta_strat = BetaStrategy("strat_beta_001", "Passive Beta (^NSEI)", "^NSEI")
 risk_manager = RiskManager()
 ml_optimizer = MLOptimizer()
 
 @app.get("/api/market-data")
 async def get_market_data():
-    symbols = ["SPY", "TLT", "GLD", "BTC"]
+    symbols = ["^NSEI", "RELIANCE.NS", "TCS.NS", "HDFCBANK.NS", "GOLDBEES.NS"]
     data = ingestion.fetch_market_data(symbols)
     
     # 1. Detect Regime
@@ -63,7 +63,7 @@ async def get_strategies():
             "metrics": alpha_strat.get_metrics(),
             "allocation": [
                 {"symbol": a.asset_symbol, "weight": a.weight} 
-                for a in alpha_strat.generate_allocation(ingestion.fetch_market_data(["SPY", "BTC"]))
+                for a in alpha_strat.generate_allocation(ingestion.fetch_market_data(["RELIANCE.NS", "TCS.NS"]))
             ]
         },
         {
@@ -73,7 +73,7 @@ async def get_strategies():
             "metrics": beta_strat.get_metrics(),
             "allocation": [
                 {"symbol": a.asset_symbol, "weight": a.weight}
-                for a in beta_strat.generate_allocation(ingestion.fetch_market_data(["SPY"]))
+                for a in beta_strat.generate_allocation(ingestion.fetch_market_data(["^NSEI"]))
             ]
         }
     ]
@@ -84,7 +84,7 @@ async def get_news():
 
 @app.get("/api/analytics/correlation")
 async def get_correlation():
-    symbols = ["SPY", "TLT", "GLD", "BTC"]
+    symbols = ["^NSEI", "RELIANCE.NS", "TCS.NS", "HDFCBANK.NS", "GOLDBEES.NS"]
     hist_data = ingestion.fetch_historical_data(symbols)
     df = pd.DataFrame(hist_data)
     corr_matrix = calculate_correlation_matrix(df)
