@@ -7,6 +7,7 @@ A sophisticated Quantitative Investment & Risk Management Framework designed to 
 The **Alpha-Beta Balancing System** is a modular framework built to handle the complexities of modern financial markets. It combines traditional quantitative finance metrics (Sharpe, Sortino, Max Drawdown) with modern machine learning techniques to adapt to changing market conditions in real-time.
 
 ### Core Philosophy
+
 - **Alpha Strategy**: Market-independent returns through mean reversion and factor models.
 - **Beta Strategy**: Systematic exposure to broad market benchmarks (e.g., SPY).
 - **Dynamic Rebalancing**: ML-driven reallocation based on detected market regimes (Bull, Bear, Volatile).
@@ -50,10 +51,12 @@ graph TD
 ## 🚥 Getting Started
 
 ### Prerequisites
+
 - Python 3.8 or higher
 - `pip` (Python package manager)
 
 ### Installation
+
 1. Clone the repository:
    ```bash
    git clone https://github.com/your-repo/alpha-beta-system.git
@@ -72,24 +75,29 @@ graph TD
 ### Running the Application
 
 #### 1. Web Dashboard (Live API)
+
 Launch the FastAPI server to access the interactive dashboard:
+
 ```bash
 python app.py
 ```
+
 Open `http://localhost:8000` in your browser.
 
 #### 2. CLI Simulation Demo
+
 Run the Phase 3 simulation to see the dynamic allocation and risk management in action:
+
 ```bash
 python main.py
 ```
 
 ## 🗺️ Roadmap
 
-- [ ] **Phase 1**: Foundation (Data & Infrastructure) - *Completed*
-- [ ] **Phase 2**: Strategy Engine & Performance Analytics - *Completed*
-- [ ] **Phase 3**: Risk Management & ML Feedback Loop - *In Progress*
-- [ ] **Phase 4**: Unified Analytics Dashboard & Multi-asset reporting - *Planned*
+- [ ] **Phase 1**: Foundation (Data & Infrastructure) - _Completed_
+- [ ] **Phase 2**: Strategy Engine & Performance Analytics - _Completed_
+- [ ] **Phase 3**: Risk Management & ML Feedback Loop - _Completed_
+- [ ] **Phase 4**: Unified Analytics Dashboard & Multi-asset reporting - _Completed_
 
 ## 📜 License
 
